@@ -1,0 +1,19 @@
+{% extends "learning_logs/base.html" %}
+{% load bootstrap3 %}
+
+    {% block header %}
+        <h3>add new api</h3>
+    {% endblock header%}
+
+    {% block content %}
+
+
+    <form action="{% url 'api:new_api' %}" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+
+        {% buttons %}
+            <button name="submit" class="btn btn-primary">add api</button>
+        {% endbuttons %}
+    </form>
+    {% endblock content%}

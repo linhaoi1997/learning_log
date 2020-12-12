@@ -1,0 +1,78 @@
+{% extends "learning_logs/base.html" %}
+
+    {% block header %}
+        <h3>
+            可供测试的api
+            <small style="float:right">
+                <a href="{% url 'api:new_api' %}">Add api</a>
+            </small>
+        </h3>
+    {% endblock header%}
+
+    {% block content %}
+    {% for api in apis %}
+    <div class="card border-primary mb-3" >
+        <table class="table table-hover">
+            <tbody>
+                <tr class="table-default">
+                    <th scope="row">名称</th>
+                    <td><pre>{{api.name}}</pre></td>
+                </tr>
+                <tr class="table-default">
+                    <th scope="row">描述</th>
+                    <td><pre>{{api.describe}}</pre></td>
+                </tr>
+                <tr class="table-default">
+                    <th scope="row">URL</th>
+                    <td><pre>{{api.url}}</pre></td>
+                </tr>
+                <tr class="table-default">
+                    <th scope="row">调用方法</th>
+                    <td><pre>{{api.method}}</pre></td>
+                </tr>
+                <tr class="table-default">
+                    <th scope="row">传入参数</th>
+                    <td><pre>{{api.input_para}}</pre></td>
+                </tr>
+                <tr class="table-default">
+                    <th scope="row">返回值</th>
+                    <td><pre>{{api.return_value}}</pre></td>
+                </tr>
+                <tr class="table-default">
+                    <th scope="row">状态码</th>
+                    <td><pre>{{api.status_code}}</pre></td>
+                </tr>
+                <tr class="table-default">
+                    <th scope="row">说明</th>
+                    <td><pre>{{api.attention}}</pre></td>
+                </tr>
+                <tr class="table-default">
+                    <th scope="row"><a href="{% url 'api:edit_api' api.id %}">edit api</a></th>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    {% empty %}
+    <h3>No api had been added yet.</h3>
+    {% endfor %}
+    {% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

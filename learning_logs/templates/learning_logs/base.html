@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+<!--    <link rel="stylesheet" type="text/css" href="{% static 'js/bootstrap.min.js' %}">-->
+    {% load bootstrap3 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <title>学习笔记</title>
+
+</head>
+<body>
+    <!--Static navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+
+            <a class="navbar-brand" href="{% url 'learning_logs:index' %}">学习笔记</a>
+            <button type="button" class="navbar-toggler" aria-expanded="false" aria-controls="navbarColor01" aria-label="Toggle navigation" type="button" data-target="#navbarColor01" data-toggle="collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+
+
+            <div id="navbar" class="navbar-collapse collapse" id="navbarColor01">
+                <ul class="mr-auto navbar-nav">
+                    <li class="nav-item active">
+                        <a href="{% url 'learning_logs:topics' %}" class="nav-link">Topic</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="{% url 'api:show_all_api' %}" class="nav-link">Api</a>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item active">
+                            <a class="nav-link">Hello,{{user.username}}</a>
+                        </li>
+                        <li class="nav-item active"><a href="{% url 'users:logout' %}" class="nav-link">Logout</a></li>
+                    {% else %}
+                        <li class="nav-item active"><a href="{% url 'users:register' %}" class="nav-link">Register</a></li>
+                        <li class="nav-item active"><a href="{% url 'users:login' %}" class="nav-link">Login</a></li>
+                    {% endif %}
+                </ul>
+
+            </div><!--/.nav-collapse-->
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header" style="margin-top:20px;margin-bottom:20px">
+            {% block header %}{% endblock header%}
+        </div>
+        <div>
+            {% block content %}{% endblock content%}
+        </div>
+    </div><!--/container-->
+
+
+</body>
+</html>

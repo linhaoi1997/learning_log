@@ -1,0 +1,17 @@
+{% extends "learning_logs/base.html" %}
+
+
+    {% block header %}
+        <div class="jumbotron" style="margin-top:50px">
+            <h1 class="display-3" >Track your learning</h1>
+            <p class="lead" style="margin-top:50px">
+                <a href="{% url 'learning_logs:index'%}">注册一个账户</a>来创建你想记录的话题，使用学习笔记！
+            </p>
+            <hr class="my-4">
+            <p class="lead">当你get到一些主题的心得时，就在你的话题下创建记录吧！</p>
+        </div>
+    {% endblock header%}
+
+    {% block content %}
+
+    {% endblock content%}
